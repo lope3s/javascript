@@ -25,7 +25,7 @@ describe("Testing getters", () => {
     const objKeys = Object.keys(obj);
 
     // getter properties in classes are not enumerable, different from their behaviour in object literals
-    const expected = ["log", "latest"];
+    const expected = ["log", "latest", "languages", "language"];
 
     assert.deepStrictEqual(objKeys, expected);
   });
@@ -40,5 +40,15 @@ describe("Testing setters", () => {
     const expect = ["ptBR"];
 
     assert.deepStrictEqual(current, expect);
+  });
+
+  it("Shouldn't be possible to access a setter property", () => {
+    // Note that it's not possible to simultaneously have a setter property that holds an actual value.
+    const actual = obj.language;
+
+    // With that, if you try to access the setter as a values you should receive an undefined value.
+    const expect = undefined;
+
+    assert.strictEqual(actual, expect);
   });
 });
