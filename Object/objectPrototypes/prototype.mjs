@@ -55,3 +55,6 @@ Bar.prototype.fName = "baz";
 
 console.log(Bar.fName); // baz
 console.log(Function.prototype.fName); // undefined
+
+// Every instance created from a constructor function will automatically have the constructor's prototype property
+// as its [[Prototype]]

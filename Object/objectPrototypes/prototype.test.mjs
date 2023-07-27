@@ -32,7 +32,7 @@ describe("Testing object prototypes", () => {
   it("Should reffer to the inheriting object context when using this in a inherited function", () => {
     // getName() is a function inherited by myObject prototype, it returns this.name;
     // as this method is beeing inherited it should return the inheriting object name, not the name
-    // of the object which owns the method, in that case undefined;
+    // of the object which owns the method;
     const myObjectName = myObject.getName();
 
     const expected = "myObject";
