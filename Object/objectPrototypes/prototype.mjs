@@ -1,4 +1,10 @@
+Object.prototype.name = "Object.prototype";
+Object.prototype.getName = function () {
+  return this.name;
+};
+
 export const myObject = {
+  name: "myObject",
   city: "Madrid",
   greet() {
     console.log(`Greetings from ${this.city}`);
@@ -33,3 +39,19 @@ export function getPrototypeChain(obj) {
 myObject.toString = function () {
   return "I'm not a [Object object]";
 };
+
+function Bar() {
+  this.foo = "foo";
+}
+
+// Bar.prototype doesn't refers to the prototype of Bar, but to the property "prototype" within the Bar object;
+// this property is used as prototype for every object constructed by Bar;
+// If you set the property "fName" on Bar, you'll see that it's not present in its prototype, because prototype here
+// its a property of Bar;
+Bar.prototype.fName = "baz";
+
+// If you set the property within the Bar prototype directly, then you get both objects with the same property
+//Function.prototype.fName = "foo";
+
+console.log(Bar.fName); // baz
+console.log(Function.prototype.fName); // undefined
